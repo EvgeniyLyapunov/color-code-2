@@ -1,0 +1,55 @@
+@import 'quasar/src/css/variables.sass';
+
+// ==========================================
+// 1. БАЗОВЫЕ СТИЛИ (Mobile First — до 599px)
+// ==========================================
+.home {
+  background: var(--lw-home-bg);
+  padding-top: 210px;
+
+  &__title {
+    font-size: 44px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px #fff;
+    user-select: none;
+  }
+}
+
+// ==========================================
+// 2. ПЛАНШЕТЫ (sm — от 600px)
+// ==========================================
+@media (min-width: $breakpoint-sm-min) {
+  .home {
+    padding-top: 210px;
+
+    &__title {
+      font-size: 56px;
+    }
+  }
+}
+
+// ==========================================
+// 3. НОУТБУКИ (md — от 1024px)
+// ==========================================
+@media (min-width: $breakpoint-md-min) {
+  .home {
+    padding-top: 180px;
+
+    &__title {
+      font-size: 72px;
+    }
+  }
+}
+
+// ==========================================
+// 4. БОЛЬШИЕ МОНИТОРЫ (lg — от 1440px)
+// ==========================================
+@media (min-width: $breakpoint-lg-min) {
+  .home {
+    padding-top: 150px;
+
+    &__title {
+      font-size: 90px;
+    }
+  }
+}

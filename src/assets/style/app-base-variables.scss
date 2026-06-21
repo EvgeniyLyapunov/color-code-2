@@ -1,0 +1,10 @@
+@import 'quasar/src/css/variables.sass';
+
+:root {
+  // home-page
+  --lw-home-bg: url('@/assets/img/bg/home/home.jpg') bottom / cover no-repeat;
+}
+
+.body--dark {
+  --lw-home-bg: url('@/assets/img/bg/home/home_dark.jpg') bottom / cover no-repeat;
+}
