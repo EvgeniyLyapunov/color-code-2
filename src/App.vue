@@ -1,5 +1,7 @@
 <template>
-  <router-view />
+  <div class="base-wrapper">
+    <router-view />
+  </div>
 </template>
 
 <script setup lang="ts">

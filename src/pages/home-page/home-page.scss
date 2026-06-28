@@ -1,55 +1,190 @@
 @import 'quasar/src/css/variables.sass';
 
-// ==========================================
-// 1. БАЗОВЫЕ СТИЛИ (Mobile First — до 599px)
-// ==========================================
 .home {
   background: var(--lw-bg-home);
-  padding-top: 210px;
-
+  &::after {
+    position: absolute;
+    z-index: 0;
+    content: '';
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    border: 2px solid var(--lw-page-border-color);
+    border-radius: 6px;
+  }
   &__title {
-    font-size: 44px;
-    font-weight: 700;
-    text-shadow: 2px 2px 4px #fff;
-    user-select: none;
+    position: absolute;
+    top: 33%;
+    left: 33%;
+    transform: translateX(-50%) translateY(-50%);
+    display: inline-block;
+    &-value {
+      display: inline-block;
+      font-weight: 500;
+      color: var(--lw-title-color);
+      text-shadow: 2px 2px 3px var(--lw-title-shadow-color);
+    }
+  }
+  &__nav-panel {
+    position: absolute;
+    top: 66%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: inline-block;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__nav-bar {
+    display: flex;
+    align-items: center;
+    gap: 46px;
+    &-item {
+      width: 90px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      &-icon {
+        font-size: 40px;
+        color: var(--lw-home-page-nav-icon-color);
+        transition: all 0.3s ease-out;
+      }
+      &-label {
+        display: inline-block;
+        font-size: 20px;
+        color: var(--lw-home-page-nav-label-color);
+        transition: all 0.3s ease-out;
+        user-select: none;
+      }
+      &:hover {
+        .home__nav-bar-item-icon {
+          transform: scale(1.5);
+        }
+        .home__nav-bar-item-label {
+          color: var(--lw-home-page-nav-label-color-hover);
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+
+  &__copy {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: flex-end;
+    &-label {
+      margin-right: 16px;
+      margin-bottom: 3px;
+      color: var(--lw-home-page-copy-text);
+      font-size: 20px;
+      line-height: 20px;
+      user-select: none;
+    }
+    &-logo {
+      width: 130px;
+      height: 30px;
+      background: url('@/assets/img/logo/logolws.png') center/ cover no-repeat;
+      user-select: none;
+    }
+  }
+
+  &__theme-switcher {
+    position: absolute;
+    z-index: 2;
+    top: 20px;
+    right: 20px;
   }
 }
 
-// ==========================================
-// 2. ПЛАНШЕТЫ (sm — от 600px)
-// ==========================================
-@media (min-width: $breakpoint-sm-min) {
+@media (max-width: 1439px) {
   .home {
-    padding-top: 210px;
-
     &__title {
-      font-size: 56px;
+      &-value {
+        font-size: 70px;
+      }
     }
   }
 }
 
-// ==========================================
-// 3. НОУТБУКИ (md — от 1024px)
-// ==========================================
-@media (min-width: $breakpoint-md-min) {
+@media (max-width: 1023px) {
   .home {
-    padding-top: 180px;
-
     &__title {
-      font-size: 72px;
+      &-value {
+        font-size: 60px;
+      }
     }
   }
 }
 
-// ==========================================
-// 4. БОЛЬШИЕ МОНИТОРЫ (lg — от 1440px)
-// ==========================================
-@media (min-width: $breakpoint-lg-min) {
+@media (max-width: 599px) {
   .home {
-    padding-top: 150px;
-
     &__title {
-      font-size: 90px;
+      position: relative;
+      top: 33%;
+      left: 0;
+      transform: translateX(0) translateY(-50%);
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      &-value {
+        font-size: 50px;
+        color: var(--lw-title-color);
+      }
+    }
+
+    &__nav-bar {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      &-item {
+        width: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        &-icon {
+          font-size: 28px;
+        }
+        &-label {
+          display: inline-block;
+          font-size: 16px;
+        }
+        &:hover {
+          .home__nav-bar-item-icon {
+            transform: scale(1.5);
+          }
+          .home__nav-bar-item-label {
+            color: var(--lw-home-page-nav-label-color-hover);
+            transform: scale(1.2);
+          }
+        }
+      }
+    }
+
+    &__copy {
+      bottom: 20px;
+      right: 20px;
+      &-label {
+        margin-right: 10px;
+        margin-bottom: 2px;
+        font-size: 14px;
+        line-height: 14px;
+      }
+      &-logo {
+        width: 100px;
+        height: 20px;
+      }
     }
   }
 }

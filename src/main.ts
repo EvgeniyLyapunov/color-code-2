@@ -9,7 +9,7 @@ import '@quasar/extras/roboto-font/roboto-font.css';
 import '@quasar/extras/material-symbols-outlined/material-symbols-outlined.css';
 import 'quasar/src/css/index.sass';
 
-import '@/assets/style/app-base-variables.scss';
+import '@/assets/style/global.scss';
 
 import App from './App.vue';
 import router from './router';
