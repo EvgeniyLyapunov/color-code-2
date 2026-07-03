@@ -16,7 +16,7 @@
           <q-icon class="home__nav-bar-item-icon" name="sym_o_developer_guide" />
           <span class="home__nav-bar-item-label">Описание</span>
         </div>
-        <div class="home__nav-bar-item">
+        <div class="home__nav-bar-item" @click="onSettingsOpen">
           <q-icon class="home__nav-bar-item-icon" name="sym_o_instant_mix" />
           <span class="home__nav-bar-item-label">Опции</span>
         </div>
@@ -28,16 +28,20 @@
       <span class="home__copy-label">little wing studio&copy;&nbsp;2026</span>
       <div class="home__copy-logo"></div>
     </div>
-
-    <!-- theme-switcher -->
-    <div class="home__theme-switcher">
-      <LwThemeSwitch />
-    </div>
   </div>
+
+  <SettingsModal />
 </template>
 
 <script setup lang="ts">
-  import LwThemeSwitch from '@/components/lw-theme-switch/LwThemeSwitch.vue';
+  import { useSettingsStore } from '@/stores/settingsStore';
+  import SettingsModal from '@/modals/home-page/settings-modal/SettingsModal.vue';
+
+  const settingsStore = useSettingsStore();
+
+  const onSettingsOpen = () => {
+    settingsStore.isSettingsModalOpen = true;
+  };
 </script>
 
 <style scoped lang="scss">
