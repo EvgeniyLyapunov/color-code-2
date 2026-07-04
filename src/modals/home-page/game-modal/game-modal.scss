@@ -9,7 +9,6 @@
     width: 100%;
     height: 40px;
     padding: 0 16px;
-    margin-bottom: 10px;
     display: flex;
     align-items: center;
     background-color: var(--lw-modal-header-bg-color);
@@ -29,11 +28,26 @@
         font-weight: 700;
         line-height: 16px;
         color: var(--lw-main-text-color);
+        user-select: none;
       }
     }
 
     &__icon-close {
       color: var(--lw-main-text-color);
+    }
+  }
+
+  &-menu {
+    &__item {
+      &-icon {
+        font-size: 20px;
+        color: var(--lw-main-text-color);
+      }
+      &-label {
+        font-size: 16px;
+        color: var(--lw-main-text-color);
+        user-select: none;
+      }
     }
   }
 }
