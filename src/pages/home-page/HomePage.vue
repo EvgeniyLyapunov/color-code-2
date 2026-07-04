@@ -8,7 +8,7 @@
     <!-- nav-panel -->
     <div class="home__nav-panel">
       <div class="home__nav-bar">
-        <div class="home__nav-bar-item">
+        <div class="home__nav-bar-item" @click="onStartGameOpen">
           <q-icon class="home__nav-bar-item-icon" name="sym_o_joystick" />
           <span class="home__nav-bar-item-label">Игра</span>
         </div>
@@ -31,16 +31,22 @@
   </div>
 
   <SettingsModal />
+  <GameModal />
 </template>
 
 <script setup lang="ts">
-  import { useSettingsStore } from '@/stores/settingsStore';
+  import { useAppStore } from '@/stores/appStore';
   import SettingsModal from '@/modals/home-page/settings-modal/SettingsModal.vue';
+  import GameModal from '@/modals/home-page/game-modal/GameModal.vue';
 
-  const settingsStore = useSettingsStore();
+  const store = useAppStore();
+
+  const onStartGameOpen = () => {
+    store.isStartModalOpen = true;
+  };
 
   const onSettingsOpen = () => {
-    settingsStore.isSettingsModalOpen = true;
+    store.isSettingsModalOpen = true;
   };
 </script>
 

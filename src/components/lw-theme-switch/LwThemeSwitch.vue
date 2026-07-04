@@ -1,18 +1,18 @@
 <template>
   <div class="fit flex justify-between theme-switcher">
-    <q-btn flat round @click="themeStore.changeTheme('light')">
+    <q-btn flat round @click="store.changeTheme('light')">
       <q-icon
         class="theme-switcher__icon"
         :class="{ 'theme-switcher__icon_active': theme === 'light' }"
         name="sym_o_light_mode" />
     </q-btn>
-    <q-btn flat round @click="themeStore.changeTheme('auto')">
+    <q-btn flat round @click="store.changeTheme('auto')">
       <q-icon
         class="theme-switcher__icon"
         :class="{ 'theme-switcher__icon_active': theme === 'auto' }"
         name="sym_o_brightness_auto" />
     </q-btn>
-    <q-btn flat round @click="themeStore.changeTheme('dark')">
+    <q-btn flat round @click="store.changeTheme('dark')">
       <q-icon
         class="theme-switcher__icon"
         :class="{ 'theme-switcher__icon_active': theme === 'dark' }"
@@ -22,10 +22,10 @@
 </template>
 
 <script setup lang="ts">
-  import { useThemeStore } from '@/stores/themeStore';
+  import { useAppStore } from '@/stores/appStore';
 
-  const themeStore = useThemeStore();
-  const { theme } = storeToRefs(themeStore);
+  const store = useAppStore();
+  const { theme } = storeToRefs(store);
 </script>
 
 <style lang="scss" scoped>

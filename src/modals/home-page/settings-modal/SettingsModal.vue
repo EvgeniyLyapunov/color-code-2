@@ -31,10 +31,10 @@
 </template>
 
 <script setup lang="ts">
-  import { useSettingsStore } from '@/stores/settingsStore';
+  import { useAppStore } from '@/stores/appStore';
   import LwThemeSwitch from '@/components/lw-theme-switch/LwThemeSwitch.vue';
 
-  const store = useSettingsStore();
+  const store = useAppStore();
 </script>
 
 <style lang="scss" scoped>

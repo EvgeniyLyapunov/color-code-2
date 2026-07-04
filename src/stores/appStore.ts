@@ -1,8 +1,11 @@
 import type { ThemePreferenceType } from '@/types/themeTypes';
 import { useStorage } from '@vueuse/core';
 
-export const useThemeStore = defineStore('themeStore', () => {
+export const useAppStore = defineStore('appStore', () => {
   const theme = useStorage<ThemePreferenceType>('color-code-theme', 'auto');
+
+  const isSettingsModalOpen = ref<boolean>(false);
+  const isStartModalOpen = ref<boolean>(false);
 
   const changeTheme = (newMode: ThemePreferenceType) => {
     theme.value = newMode;
@@ -10,6 +13,8 @@ export const useThemeStore = defineStore('themeStore', () => {
 
   return {
     theme,
+    isSettingsModalOpen,
+    isStartModalOpen,
     changeTheme,
   };
 });
