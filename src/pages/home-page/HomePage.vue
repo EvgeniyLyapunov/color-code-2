@@ -12,7 +12,7 @@
           <q-icon class="home__nav-bar-item-icon" name="sym_o_joystick" />
           <span class="home__nav-bar-item-label">Игра</span>
         </div>
-        <div class="home__nav-bar-item">
+        <div class="home__nav-bar-item" @click="onDescriptionModalOpen">
           <q-icon class="home__nav-bar-item-icon" name="sym_o_developer_guide" />
           <span class="home__nav-bar-item-label">Описание</span>
         </div>
@@ -30,19 +30,25 @@
     </div>
   </div>
 
-  <SettingsModal />
   <GameModal />
+  <DescriptionModal />
+  <SettingsModal />
 </template>
 
 <script setup lang="ts">
   import { useAppStore } from '@/stores/appStore';
-  import SettingsModal from '@/modals/home-page/settings-modal/SettingsModal.vue';
   import GameModal from '@/modals/home-page/game-modal/GameModal.vue';
+  import DescriptionModal from '@/modals/home-page/description-modal/DescriptionModal.vue';
+  import SettingsModal from '@/modals/home-page/settings-modal/SettingsModal.vue';
 
   const store = useAppStore();
 
   const onStartGameOpen = () => {
     store.isStartModalOpen = true;
+  };
+
+  const onDescriptionModalOpen = () => {
+    store.isDescriptionModalOpen = true;
   };
 
   const onSettingsOpen = () => {

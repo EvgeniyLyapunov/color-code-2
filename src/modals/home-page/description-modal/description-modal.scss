@@ -1,0 +1,53 @@
+.modal {
+  max-width: unset;
+  width: 500px;
+  padding: 0;
+  margin: 0;
+  background-color: var(--lw-layout-bg-color);
+
+  &-header {
+    width: 100%;
+    height: 40px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    background-color: var(--lw-modal-header-bg-color);
+
+    &__title {
+      display: flex;
+      align-items: center;
+
+      &-icon {
+        margin-right: 10px;
+        font-size: 26px;
+        color: var(--lw-main-text-color);
+      }
+
+      &-value {
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 16px;
+        color: var(--lw-main-text-color);
+        user-select: none;
+      }
+    }
+
+    &__icon-close {
+      color: var(--lw-main-text-color);
+    }
+  }
+
+  &-menu {
+    &__item {
+      &-icon {
+        font-size: 20px;
+        color: var(--lw-main-text-color);
+      }
+      &-label {
+        font-size: 16px;
+        color: var(--lw-main-text-color);
+        user-select: none;
+      }
+    }
+  }
+}

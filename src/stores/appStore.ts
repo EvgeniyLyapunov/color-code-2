@@ -6,6 +6,7 @@ export const useAppStore = defineStore('appStore', () => {
 
   const isSettingsModalOpen = ref<boolean>(false);
   const isStartModalOpen = ref<boolean>(false);
+  const isDescriptionModalOpen = ref<boolean>(false);
 
   const changeTheme = (newMode: ThemePreferenceType) => {
     theme.value = newMode;
@@ -15,6 +16,7 @@ export const useAppStore = defineStore('appStore', () => {
     theme,
     isSettingsModalOpen,
     isStartModalOpen,
+    isDescriptionModalOpen,
     changeTheme,
   };
 });
