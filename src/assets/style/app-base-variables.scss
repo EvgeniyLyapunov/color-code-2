@@ -40,6 +40,11 @@
   --lw-home-page-nav-label-color-hover: #fff;
   --lw-home-page-copy-text: #7e7e7e;
 
+  /* ===== intro-page ======*/
+  --lw-intro-bg-color: #fff;
+  --lw-intro-border-square-color: #333;
+  --glow-color: #ffce5c;
+
   --lw-theme-switcher-icon-color: #133a9e;
   --lw-theme-switcher-icon-color-active: #d07035;
 
@@ -70,6 +75,14 @@
   /* ===== App base text colors ===== */
   --lw-main-text-color: #fff;
 
+  /* ===== App base layout background ===== */
+  --lw-layout-bg-color: #4a4839;
+
+  /* ===== App modal layout ===== */
+  --lw-layout-bg-color: #4a4839;
+  --lw-modal-header-bg-color: #3e5875;
+  --lw-modal-btn-icon-color: #6186ad;
+
   /* ===== home-page ===== */
   --lw-title-color: #8f64a8;
   --lw-title-shadow-color: #3d0384;
@@ -79,13 +92,13 @@
   --lw-home-page-nav-label-color-hover: #b4d3ff;
   --lw-home-page-copy-text: #91a5c1;
 
+  /* ===== intro-page ======*/
+  --lw-intro-bg-color: #000;
+  --lw-intro-border-square-color: #c1c1c1;
+  --glow-color: #ffce5c;
+
   --lw-theme-switcher-icon-color: #265be0;
   --lw-theme-switcher-icon-color-active: #ec8444;
-
-  /* ===== App base layout background ===== */
-  --lw-layout-bg-color: #4a4839;
-  --lw-modal-header-bg-color: #3e5875;
-
   /* ===== App backgrounds ===== */
   --lw-bg-home: url('@/assets/img/bg/home/home_dark.jpg') bottom left / cover no-repeat;
 }

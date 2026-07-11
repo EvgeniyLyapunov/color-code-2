@@ -16,7 +16,7 @@
         <q-btn class="modal-header__icon-close" icon="sym_o_close" flat round dense v-close-popup />
       </q-card-section>
       <q-list class="modal-menu" style="width: 100%">
-        <q-item class="modal-menu__item" clickable v-ripple>
+        <q-item class="modal-menu__item" clickable v-ripple @click="onNewGameStart">
           <q-item-section avatar style="min-width: 30px">
             <q-icon class="modal-menu__item-icon" name="sym_o_flag_2" />
           </q-item-section>
@@ -48,6 +48,12 @@
   import { useAppStore } from '@/stores/appStore';
 
   const store = useAppStore();
+  const router = useRouter();
+
+  const onNewGameStart = () => {
+    store.isStartModalOpen = false;
+    router.push('/intro');
+  };
 </script>
 
 <style lang="scss" scoped>
