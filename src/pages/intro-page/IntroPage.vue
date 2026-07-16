@@ -42,7 +42,7 @@
         },
       });
 
-      // 1. Появление контуров квадратов
+      // Шаг 1: Появление контуров квадратов
       tl.from('.square', {
         scale: 0,
         opacity: 0,
@@ -51,7 +51,7 @@
         ease: 'power3.out',
       });
 
-      // 2. Рандомная смена цветов
+      // Шаг 2: Рандомная смена цветов
       tl.to('.square', {
         backgroundColor: (index, target) => {
           const availableColors = codeColors.filter((c) => c !== target._lastColor);
@@ -67,7 +67,7 @@
         stagger: 0.2,
       });
 
-      // 3. Заливка янтарным цветом и затемнение фона (для светлой темы)
+      // Шаг 3: Заливка янтарным цветом и адаптация фона
       tl.to('.square', {
         backgroundColor: '#fdbc2f',
         duration: 1,
@@ -96,17 +96,17 @@
         '<0.3',
       );
 
-      // 4. Пульсирующее янтарное сияние
+      // Шаг 4: Пульсирующее янтарное сияние
       tl.to('.square', {
         '--glow-blur': () => `${gsap.utils.random(15, 40)}px`,
         '--glow-spread': () => '4px',
         duration: 0.4,
-        repeat: 9,
+        repeat: 1,
         repeatRefresh: true,
         ease: 'sine.inOut',
       });
 
-      // 5. Магнитное слияние в центр и рост центрального квадрата
+      // Шаг 5: Магнитное слияние квадратов в центр и рост
       tl.add('merge');
 
       const squares = gsap.utils.toArray('.square') as HTMLElement[];
@@ -139,17 +139,17 @@
       );
 
       tl.to(
-        [sq0!, sq3!],
+        [sq1!, sq2!],
         {
           x: (i, el) => getXOffset(el as HTMLElement),
-          duration: 3.0,
+          duration: 0.8,
           ease: 'power2.inOut',
         },
         'merge',
       );
 
       tl.to(
-        [sq1!, sq2!],
+        [sq0!, sq3!],
         {
           x: (i, el) => getXOffset(el as HTMLElement),
           duration: 1.5,
@@ -158,36 +158,36 @@
         'merge',
       );
 
-      tl.set(sq2!, { opacity: 0 }, '>');
+      tl.set(sq2!, { opacity: 0 }, 'merge+=0.8');
 
       tl.to(
         sq1!,
         {
           scale: 2.5,
-          duration: 1.5,
-          ease: 'none',
+          duration: 1.2,
+          ease: 'power2.out',
         },
-        '<',
+        'merge+=0.8',
       );
 
       tl.to(
         [sq0!, sq3!],
         {
           opacity: 0,
-          duration: 0.8,
+          duration: 0.3,
           ease: 'none',
         },
-        '<0.5',
+        'merge+=1.1',
       );
 
-      // 6. Превращение в круг с вращением
+      // Шаг 6: Превращение в круг с вращением
       tl.to(
         sq1!,
         {
           '--glow-blur': () => `${gsap.utils.random(30, 80)}px`,
           '--glow-spread': () => `${gsap.utils.random(5, 20)}px`,
           duration: 0.5,
-          repeat: 5,
+          repeat: 2,
           repeatRefresh: true,
           ease: 'sine.inOut',
         },
@@ -197,45 +197,44 @@
       tl.to(
         sq1!,
         {
-          borderRadius: '50%',
-          rotation: 360,
-          duration: 2.5,
-          ease: 'power2.inOut',
+          borderRadius: '40%',
+          duration: 1.5,
+          ease: 'power3.in',
         },
         '<',
       );
 
-      // 7. Световая вспышка на весь экран и возврат к чистой теме
       tl.to(
         sq1!,
         {
-          '--glow-blur': '50px',
-          '--glow-spread': '10px',
-          duration: 0.1,
+          rotation: 720,
+          duration: 2.1,
+          ease: 'power3.in',
         },
-        '+=0.5',
+        '<',
       );
 
+      // Шаг 7: Световая вспышка (Разрыв центрифуги)
       tl.to(
         sq1!,
         {
-          scale: 30,
+          scale: 40,
           backgroundColor: '#fff4cc',
           '--glow-blur': '500px',
           '--glow-spread': '100px',
           duration: 0.6,
           ease: 'power4.in',
         },
-        '>',
+        '>-0.8',
       );
 
       tl.to(
         sq1!,
         {
           opacity: 0,
-          duration: 0.1,
+          duration: 0.2,
         },
-        '>',
+        '<0.4',
       );
 
       if (!$q.dark.isActive && introRef.value) {
@@ -249,37 +248,68 @@
           '<',
         );
       }
-
-      // 8. Появление текста "Код существует"
-      tl.set(textRef.value, { autoAlpha: 1 }, '+=1.0');
+      // Шаг 8: Появление текста с первичным глитчем
+      tl.set(textRef.value, { autoAlpha: 1 }, '<0.2');
 
       tl.to(
         '.char',
         {
           opacity: 1,
-          duration: 0.8,
+          duration: 0.5,
           stagger: 0.1,
-          ease: 'power2.inOut',
+          ease: 'power2.out',
         },
-        '+=1.0',
+        '<',
       );
 
-      tl.add('textHold', '+=3.0');
+      tl.to(
+        '.char',
+        {
+          x: () => gsap.utils.random(-10, 10),
+          skewX: () => gsap.utils.random(-20, 20),
+          opacity: () => gsap.utils.random(0.4, 1),
+          duration: 0.05,
+          repeat: 1,
+          yoyo: true,
+          ease: 'none',
+        },
+        '>-0.2',
+      );
 
-      // 9. Рандомное затухание текста и осыпание
+      tl.set('.char', { x: 0, skewX: 0, opacity: 1 });
+
+      // Шаг 9: Финальный глитч и осыпание текста
+      tl.add('preFade', '+=1.0');
+
+      tl.to(
+        '.char',
+        {
+          x: () => gsap.utils.random(-12, 12),
+          skewX: () => gsap.utils.random(-25, 25),
+          scale: () => gsap.utils.random(0.9, 1.1),
+          duration: 0.05,
+          repeat: 1,
+          yoyo: true,
+          ease: 'none',
+        },
+        'preFade',
+      );
+
+      tl.set('.char', { x: 0, skewX: 0, scale: 1 });
+
       tl.to(
         '.char',
         {
           opacity: 0,
           y: 20,
-          duration: 0.6,
+          duration: 0.5,
           stagger: {
-            each: 0.1,
+            each: 0.08,
             from: 'random',
           },
           ease: 'power2.in',
         },
-        'textHold',
+        '>0.5',
       );
     }, introRef.value);
   });

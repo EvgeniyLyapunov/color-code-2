@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
   background-color: var(--lw-intro-bg-color);
+  caret-color: transparent;
 }
 
 .squares-wrapper {
@@ -17,7 +18,6 @@
   background-color: transparent;
   border-radius: 5px;
   box-shadow: 0 0 var(--glow-blur, 0px) var(--glow-spread, 0px) #ffce5c;
-  // color: #adadad;
 }
 
 .text-wrapper {
@@ -37,4 +37,23 @@
 .char {
   display: inline-block;
   opacity: 0;
+}
+
+// ==========================================
+// 5. ПЛАНШЕТЫ (до 768px)
+// ==========================================
+@media (max-width: 767px) {
+  .squares-wrapper {
+    gap: 1.5rem;
+  }
+
+  .square {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+  }
+
+  .text-wrapper {
+    font-size: 1.5rem;
+  }
 }
