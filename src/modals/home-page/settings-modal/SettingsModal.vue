@@ -26,6 +26,19 @@
           <LwThemeSwitch />
         </div>
       </q-card-section>
+      <q-card-section class="modal-row">
+        <div class="modal-field modal-field_w60">
+          <q-icon class="modal-field__icon" name="sym_o_theater_comedy" />
+          <span class="modal-field__label">Показывать Интро</span>
+        </div>
+        <div class="modal-field modal-field_w40 justify-center">
+          <q-toggle
+            v-model="store.isIntroShow"
+            checked-icon="sym_o_check"
+            color="positive"
+            unchecked-icon="sym_o_clear" />
+        </div>
+      </q-card-section>
     </q-card>
   </q-dialog>
 </template>

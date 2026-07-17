@@ -3,6 +3,7 @@ import { useStorage } from '@vueuse/core';
 
 export const useAppStore = defineStore('appStore', () => {
   const theme = useStorage<ThemePreferenceType>('color-code-theme', 'auto');
+  const isIntroShow = useStorage<boolean>('is-intro-show', true);
 
   const isSettingsModalOpen = ref<boolean>(false);
   const isStartModalOpen = ref<boolean>(false);
@@ -14,6 +15,7 @@ export const useAppStore = defineStore('appStore', () => {
 
   return {
     theme,
+    isIntroShow,
     isSettingsModalOpen,
     isStartModalOpen,
     isDescriptionModalOpen,

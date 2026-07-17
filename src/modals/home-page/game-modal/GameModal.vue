@@ -52,7 +52,11 @@
 
   const onNewGameStart = () => {
     store.isStartModalOpen = false;
-    router.push('/intro');
+    if (store.isIntroShow) {
+      router.push('/intro');
+    } else {
+      router.push('/game');
+    }
   };
 </script>
 
